@@ -32,7 +32,6 @@ class Country {
     assert(initial.isNotEmpty, 'Insira a sigla do país');
 
     initial = initial.toUpperCase();
-
     late Country country;
 
     if (Countries.i.list.any((map) {
@@ -51,6 +50,7 @@ class Country {
   }
 }
 
+/// Injetar o endereço assets da flags dentro de uma instância de [Country]
 extension ImplementFlagAddress on Country {
   // ignore: unnecessary_this
   String get flagAddress => 'assets/flags/${this.initials.toLowerCase()}.png';

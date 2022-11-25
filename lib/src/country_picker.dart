@@ -7,11 +7,36 @@ part 'countries_list.dart';
 part 'flag_builder.dart';
 part 'country_model.dart';
 
+/// Widget principal responsável por exibir 7 tipos [LabelType] de rotulos:
+///
+/// O parâmentro [initialCodeCountry] é obrigatório e é através dele que os dados
+/// de uma paíes é localizado e carregar com um widget
+///
+/// Através da função [onSelectedCountry] é possível ler os dados do país selecionado
+///
 @immutable
 class CountryPicker extends StatelessWidget {
-  /// Widget principal responsável por exibir uma flag ou dados de uma país
   ///
-  /// Através da função [onSelectedCountry] é possível ler os dados do país selecionado
+  /// Exemplo de uso
+  ///
+  /// class Home extends StatelessWidget {
+  ///   @override
+  ///   Widget build(BuildContext context) {
+  /// 		return Material(
+  ///       color: Theme.of(context).scaffoldBackgroundColor,
+  /// 		  child: Center(
+  ///       child: CountryPicker(
+  ///         initialCodeCountry: 'BR',
+  ///         labelType: LabelType.flagWithName,
+  ///         onSelectedCountry: (country){
+  ///           print(country.name);
+  ///         },
+  ///       ),
+  ///     ),
+  /// 		);
+  ///   }
+  /// }
+  ///
   final String initialCodeCountry;
   final Function(Country) onSelectedCountry;
   final EdgeInsetsGeometry? paddingOnFlag;
@@ -20,6 +45,10 @@ class CountryPicker extends StatelessWidget {
   final LabelType labelType;
   final TextStyle textStyle;
 
+  ///
+  /// A partir desses parâmentros é possível inserir customizações na
+  /// função [showGeneralDialog]
+  ///
   final Duration dialogTransitionDuration;
   final Color dialogBarrierColor;
   final Icon dialogIcon;
@@ -33,6 +62,7 @@ class CountryPicker extends StatelessWidget {
   final Size dialogFlagSize;
   final Decoration? dialogDecoration;
   final BorderRadius? dialogBorderRadiusOnFlag;
+  final Offset dialogOffset;
 
   const CountryPicker({
     Key? key,
@@ -56,6 +86,7 @@ class CountryPicker extends StatelessWidget {
     this.dialogFlagSize = const Size(52.0, 35.0),
     this.dialogDecoration,
     this.dialogBorderRadiusOnFlag = BorderRadius.zero,
+    this.dialogOffset = const Offset(0.0, 1.0), // de baixo pra cima
   }) : super(key: key);
 
   @override
@@ -233,7 +264,7 @@ class CountryPicker extends StatelessWidget {
           transitionBuilder: (context, animation, secAnimation, widget) {
             return SlideTransition(
               position: Tween(
-                begin: const Offset(0.0, 1.0),
+                begin: dialogOffset,
                 end: Offset.zero,
               ).animate(animation),
               // position: animation.drive(
@@ -248,7 +279,9 @@ class CountryPicker extends StatelessWidget {
         );
       },
       child: ColoredBox(
-          color: const Color(0x00000000), child: Labels(countryPicker: this)),
+        color: const Color(0x00000000),
+        child: Labels(countryPicker: this),
+      ),
     );
   }
 }
@@ -262,27 +295,6 @@ enum LabelType {
   flagWithDialCode,
   flagWithInitials
 }
-
-/// `Exemplo de uso`
-/// ```
-/// class Home extends StatelessWidget {
-///   @override
-///   Widget build(BuildContext context) {
-/// 		return Material(
-///       color: Theme.of(context).scaffoldBackgroundColor,
-/// 		  child: Center(
-///       child: CountryPicker(
-///         initialCodeCountry: 'BR',
-///         labelType: LabelType.flagWithName,
-///         onSelectedCountry: (country){
-///           print(country.name);
-///         },
-///       ),
-///     ),
-/// 		);
-///   }
-/// }
-/// ```
 
 //rascunho não finalizado para outros widget
 /*

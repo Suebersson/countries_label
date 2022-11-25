@@ -2,7 +2,10 @@ part of 'country_picker.dart';
 
 @immutable
 class FlagBuilder extends StatelessWidget {
-  /// Componente widget responsável por exibir as badeirinhas/flags
+  /// Componente widget responsável por exibir as badeirinhas/flags com
+  /// algumas customizações simples [size], [padding], [borderRadius]
+  ///
+  /// Esté objeto é usado nos objetos [CountryPicker] e [Labels]
   const FlagBuilder({
     Key? key,
     required this.image,

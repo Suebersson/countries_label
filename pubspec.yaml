@@ -1,6 +1,6 @@
 name: countries_label
 description: Package para exibir um Widget com rotulo (bandeira, nome do país, DDI, sigla) de países.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/Suebersson/countries_label.git
 repository: https://github.com/Suebersson/countries_label
 
