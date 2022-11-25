@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ephemeral_state_manager/ephemeral_state_manager.dart';
+import 'package:dart_dev_utils/dart_dev_utils.dart' show printLog;
 
 part 'labels.dart';
 part 'countries_list.dart';
@@ -8,6 +9,9 @@ part 'country_model.dart';
 
 @immutable
 class CountryPicker extends StatelessWidget {
+  /// Widget principal responsável por exibir uma flag ou dados de uma país
+  ///
+  /// Através da função [onSelectedCountry] é possível ler os dados do país selecionado
   final String initialCodeCountry;
   final Function(Country) onSelectedCountry;
   final EdgeInsetsGeometry? paddingOnFlag;

@@ -2,7 +2,9 @@ part of 'country_picker.dart';
 
 @immutable
 class Labels extends StatelessWidget {
-  /// widget que exibirá o tipo label selecionada
+  /// Componete widget que resposável por exibir o tipo label selecionada
+  /// Caso a sigla informada não seja encontrada na lista no objeto [Countries],
+  /// será exibido o widget [CountryNotLocated]
   const Labels({Key? key, required this.countryPicker}) : super(key: key);
 
   final CountryPicker countryPicker;
@@ -111,7 +113,7 @@ class Labels extends StatelessWidget {
 }
 
 class CountryNotLocated extends StatelessWidget {
-  const CountryNotLocated() : super(key: null);
+  const CountryNotLocated({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return const Text(

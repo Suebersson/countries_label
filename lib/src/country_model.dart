@@ -2,13 +2,21 @@ part of 'country_picker.dart';
 
 @immutable
 class Country {
-  /// objeto construtor para carregar os dados de um país
+  /// Classe construtora para carregar os dados de um país
+  ///
+  /// Caso a sigla passada no construtor factory [Country.fromInitial]
+  /// não exista dentro da list [Countries] ao invés executar uma [throw] e gerar um erro,
+  /// será retornado uma map com parâmentros undefined
+  ///
+  const Country({
+    required this.name,
+    required this.initials,
+    required this.dialCode,
+  });
+
   final String name;
   final String initials;
   final String dialCode;
-
-  const Country(
-      {required this.name, required this.initials, required this.dialCode});
 
   factory Country.fromMap(Map<String, String> countryData) {
     return Country(
@@ -19,6 +27,8 @@ class Country {
   }
 
   factory Country.fromInitial(String initial) {
+    /// Obter os dados de uma país pela sigla
+    /// EX: final Country country = Country.fromInitial("BR");
     assert(initial.isNotEmpty, 'Insira a sigla do país');
 
     initial = initial.toUpperCase();
@@ -35,7 +45,8 @@ class Country {
     })) {
       return country;
     } else {
-      throw 'País não localizado';
+      printLog('País não localizado');
+      return Country.fromMap(Countries.i.list[0]);
     }
   }
 }

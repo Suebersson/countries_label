@@ -1,6 +1,6 @@
 name: countries_label
 description: Package para exibir um Widget com rotulo (bandeira, nome do país, DDI, sigla) de países.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/Suebersson/countries_label.git
 repository: https://github.com/Suebersson/countries_label
 
@@ -18,6 +18,7 @@ dependencies:
   flutter:
     sdk: flutter
   ephemeral_state_manager: ^1.0.5
+  dart_dev_utils: ^1.0.9
 
 dev_dependencies:
   flutter_test:

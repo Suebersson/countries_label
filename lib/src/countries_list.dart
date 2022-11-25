@@ -3,18 +3,27 @@
 part of 'country_picker.dart';
 
 extension ImplementParametersName on Map<String, String> {
+  /// nome das keys, e útil para facilitar o desenvolvimento
   String get countryName => 'name';
   String get countryInitials => 'initials';
   String get countryDialCode => 'dialCode';
 }
 
-/// dados básicos dos países
+/// Lista com os dados básicos dos países
 class Countries {
   static final Countries _instance = Countries._();
   static Countries get i => _instance;
   Countries._();
 
+  /// Como essa lista é muito grande, a classe pai será sempre uma instância única
   final List<Map<String, String>> list = const [
+    // esse será o objeto que será retornado quando for solicitado os
+    // dados de algum país que não exsite na lista
+    {
+      "name": "undefined",
+      "initials": "undefined",
+      "dialCode": "undefined",
+    },
     {
       "name": "افغانستان",
       "initials": "AF",
