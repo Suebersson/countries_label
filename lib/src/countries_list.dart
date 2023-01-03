@@ -13,9 +13,14 @@ extension ImplementParametersName on Map<String, String> {
 /// Como a lista de dados é muito grande, essa classe obriga
 /// acessar os dados apenas com uma instância única
 class Countries {
+  
   static final Countries _instance = Countries._();
   static Countries get i => _instance;
   Countries._();
+
+  factory Countries(){
+    return _instance;
+  }
 
   final List<Map<String, String>> list = const [
     /// Esse será o objeto que será retornado quando for solicitado os

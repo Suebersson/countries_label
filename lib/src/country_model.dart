@@ -44,7 +44,10 @@ class Country {
     })) {
       return country;
     } else {
-      printLog('País não localizado');
+      printLog(
+        'País não localizado', 
+        name: 'countries_label'
+      );
       return Country.fromMap(Countries.i.list[0]);
     }
   }
@@ -52,6 +55,5 @@ class Country {
 
 /// Injetar o endereço assets da flags dentro de uma instância de [Country]
 extension ImplementFlagAddress on Country {
-  // ignore: unnecessary_this
-  String get flagAddress => 'assets/flags/${this.initials.toLowerCase()}.png';
+  String get flagAddress => 'assets/flags/${initials.toLowerCase()}.png';
 }
